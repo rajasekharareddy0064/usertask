@@ -1,0 +1,66 @@
+<div class="container">
+  <h4><b>Space X Program</b></h4>
+  <div class="row">
+   
+      <div class="col-md-2">
+        <h6 class="font-weight-bold">Filters</h6>
+        <p class="text-center font-weight-bold"> Launch Year</p>
+        <div class="row">
+          <div class="col-md-6 " *ngFor="let launchYear of uniqueLauncHYear">
+            <p class="launchYear" (click)="getAllLaunchLandSuccess(launchYear)" #launchVal [ngStyle]="launchYear === selected ? {'backgroundColor': '	#009900'} : '' ">{{launchYear}}</p>
+            </div>
+        </div>
+       
+        <p class="text-center font-weight-bold boxName"> Successful Launch</p>
+        <div class="row">
+          <div class="col-md-6 d-flex " >
+            <p class="launchYear" (click)="getLaunchSuccess(true)" style="cursor: pointer;">True</p>
+            <p  class="launchYear ml-5"  (click)="getLaunchSuccess(false)"> False</p>
+            </div>
+        </div>
+        <p class="text-center font-weight-bold boxName"> Successful Landing</p>
+        <div class="row">
+          <div class="col-md-6 d-flex" >
+            <p  class="launchYear"  (click)="getLand_LaunchSuccess(true)">True</p>
+            <p  class="launchYear ml-5" (click)="getLand_LaunchSuccess(false)"> False</p>
+            </div>
+        </div>
+    
+       </div>
+       <div class="col-md-10" >
+
+         <div class="row" *ngIf="allSpcaeXData.length > 0; else thenBlock">
+          <div class="col-md-3" *ngFor="let spaceX of allSpcaeXData;">
+            <div class="card" >
+              <img  class="card-img-top img-fluid" [src]="spaceX.links['mission_patch']"  height="150">
+              <div class="card-body">
+                <h6 class="card-title font-weight-bold">{{spaceX.mission_name}} &nbsp;&nbsp;#{{spaceX.flight_number}}</h6>
+                <p class="card-text font-weight-bold"><b>Mission Ids: {{spaceX.mission_id}}</b> </p>
+                <p class="card-text font-weight-bold"><b>Launch Year:</b> {{spaceX.launch_year}}</p>
+                <p class="card-text font-weight-bold"><b>Successful Launch:</b> {{spaceX.launch_success}} </p>
+                <p class="card-text font-weight-bold"><b>Successful Landing:</b> {{spaceX.land_success}}</p>
+              </div>
+            </div>
+          </div>
+         </div>
+         <ng-template #thenBlock>
+        
+
+        
+           <div class="text-center no-data">
+            No Data Found
+           </div>
+         
+         
+          </ng-template>
+    
+       
+       </div>
+    </div>
+
+    <div class="pageFooter">
+      <p class="font-weight-bold">Developed By: RajaShekar</p>
+    </div>
+   
+  </div>
+
